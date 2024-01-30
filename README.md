@@ -1,1 +1,1 @@
-# -ICPC-Sheet-3-Arrays-
+# ICPC-Sheet-3-Arrays
