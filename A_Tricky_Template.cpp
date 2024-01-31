@@ -331,7 +331,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for (int i = 1; i <= t; i++)
     {
         eprintf("--- Case #%lld start ---\n", i);
@@ -352,9 +352,21 @@ void solve()
 {
     int n;
     cin >> n;
-    vi v(n);
-    cin >> v;
-    reverse(all(v));
-    cout << v;
-    pl;
+    string a, b, c;
+    cin >> a;
+    cin >> b;
+    cin >> c;
+    int cap = 0, sm = 0;
+    debug(a);
+    debug(b);
+    debug(c);
+    fo(i, n)
+    {
+
+        if (c[i] == a[i] or c[i] == b[i])
+            cap++;
+        else
+            sm++;
+    }
+    (sm >= 1) ? py : pn;
 }

@@ -331,7 +331,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for (int i = 1; i <= t; i++)
     {
         eprintf("--- Case #%lld start ---\n", i);
@@ -354,7 +354,21 @@ void solve()
     cin >> n;
     vi v(n);
     cin >> v;
-    reverse(all(v));
-    cout << v;
-    pl;
+    v.push_back(1);
+    fo(i, n)
+    {
+        while (i < v[i])
+        {
+
+            v[i + 1]++;
+            v[i]--;
+        }
+        if (v[i] < i)
+        {
+            pn;
+            return;
+        }
+    }
+    debug(v);
+    py;
 }

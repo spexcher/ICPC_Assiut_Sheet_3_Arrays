@@ -331,7 +331,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for (int i = 1; i <= t; i++)
     {
         eprintf("--- Case #%lld start ---\n", i);
@@ -352,9 +352,20 @@ void solve()
 {
     int n;
     cin >> n;
-    vi v(n);
-    cin >> v;
-    reverse(all(v));
-    cout << v;
+    vi a(n);
+    vi b(n);
+    cin >> a;
+    cin >> b;
+    vpll diff(n);
+    fo(i, n) diff[i] = {abs(a[i] + b[i]), i};
+    sort(all(diff));
+    vpll res(n);
+    fo(i, n)
+    {
+        res[i] = {a[diff[i].ss], b[diff[i].ss]};
+    }
+    fo(i, n) cout << res[i].ff << sp;
+    pl;
+    fo(i, n) cout << res[i].ss << sp;
     pl;
 }

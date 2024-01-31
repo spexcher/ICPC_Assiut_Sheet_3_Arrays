@@ -331,7 +331,7 @@ signed main()
     cin.tie(NULL);
     cout.tie(NULL);
     int t = 1;
-    // cin >> t;
+    cin >> t;
     for (int i = 1; i <= t; i++)
     {
         eprintf("--- Case #%lld start ---\n", i);
@@ -350,11 +350,37 @@ signed main()
 
 void solve()
 {
-    int n;
-    cin >> n;
-    vi v(n);
-    cin >> v;
-    reverse(all(v));
-    cout << v;
-    pl;
+    int a, b, r;
+    cin >> a >> b >> r;
+    if (a == b)
+    {
+        print(0);
+        return;
+    }
+    if (b < a)
+        swap(a, b);
+    int msb = 0;
+    Fo(i, 63, -1)
+    {
+        if ((a & (1ll << i)) != (b & (1ll << i)))
+        {
+            msb = i;
+            break;
+        }
+    }
+    int cost = 0;
+    Fo(i, msb - 1, -1) // so we leave the msb and we know b>a
+    {
+        int mask = (1ll << i);
+        if ((cost + mask) <= r)
+        {
+            if (!(a & mask) and (b & mask)) // a is 0 and b is 1 in terms of ith bit maximize a and minimize b
+            {
+                cost += mask;
+                a ^= mask;
+                b ^= mask;
+            }
+        }
+    }
+    print(b - a);
 }
