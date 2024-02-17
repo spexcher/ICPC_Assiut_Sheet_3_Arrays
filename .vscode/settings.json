@@ -1,6 +1,6 @@
 {
   "files.associations": {
-    "iostream": "cpp",
-    "stdbool.h": "c"
+    "chrono": "cpp",
+    "span": "cpp"
   }
 }
