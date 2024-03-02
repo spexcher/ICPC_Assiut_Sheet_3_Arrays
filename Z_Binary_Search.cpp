@@ -343,7 +343,6 @@ signed main()
         eprintf("--- Case #%lld end ---\n", i);
         eprintf("time = %.5lf\n", getCurrentTime());
         eprintf("++++++++++++++++++++\n");
-
         // solve();
     }
 
