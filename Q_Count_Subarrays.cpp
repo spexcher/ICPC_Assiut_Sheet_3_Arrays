@@ -355,20 +355,20 @@ void solve()
 {
     int n;
     cin >> n;
-    int count = 0;
     vi v(n);
     cin >> v;
     int l = 1;
-    for (int i = 1; i < n; ++i)
+    int count = 0;
+    Fo(i, 1, n)
     {
         if (v[i] >= v[i - 1])
             l++;
         else
         {
-            count += (l * (l + 1)) / 2;
+            count += ((l + 1) * l) / 2;
             l = 1;
         }
     }
-    count += (l * (l + 1)) / 2;
+    count += ((l + 1) * l) / 2;
     print(count);
 }
