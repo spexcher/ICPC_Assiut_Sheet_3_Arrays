@@ -1,4 +1,3 @@
-
 #define MOD 1000000007
 /*-------------------------------Start Snippet------------------------------------------
 AUTHOR: spexcher
@@ -44,7 +43,6 @@ using pll = pair<ll, ll>;
 #define mod MOD
 #define eb emplace_back
 #define pb push_back
-#define ppb pop_back
 
 #define int long long
 // disable this to storage constrained problems
@@ -60,7 +58,6 @@ using pll = pair<ll, ll>;
 #define vvc vector<vector<char>>
 #define vb vector<bool>
 #define vc vector<char>
-#define vs vector<string>
 #define vvi vector<vector<int>>
 #define vvll vector<vector<ll>>
 #define vvb vector<vector<bool>>
@@ -350,84 +347,20 @@ signed main()
     return 0;
 }
 //-----------------------------End Snippet--------------------------
-int n, m;
-vvb vis(1050, vb(1050, false));
-vvc grid(1050, vc(1050));
-vvpii path(1050, vpii(1050));
-vi dx = {0, 0, 1, -1};
-vi dy = {-1, 1, 0, 0};
-pii start;
-pii destination;
-bool isValid(int i, int j, int n, int m)
-{
-    return (i >= 0 and i < n and j >= 0 and j < m);
-}
-void bfs()
-{
-    queue<pii> q;
-    q.push(start);
-    vis[start.ff][start.ss] = true;
-    while (q.size() > 0)
-    {
-        pii cur = q.front();
-        q.pop();
-        fo(k, 4)
-        {
-            int nrow = cur.ff + dx[k];
-            int ncol = cur.ss + dy[k];
-            if (isValid(nrow, ncol, n, m) and vis[nrow][ncol] == false)
-            {
-                q.push({nrow, ncol});
-                vis[nrow][ncol] = true;
-                path[nrow][ncol] = {dx[k], dy[k]};
-            }
-        }
-    }
-}
+
 void solve()
 {
-    cin >> n >> m;
-    for (int i = 0; i < n; ++i)
+    int n;
+    cin >> n;
+    int arr[n];
+    int sum = 0;
+    fo(i, n)
     {
-        for (int j = 0; j < m; ++j)
-        {
-            path[i][j] = {-1, -1};
-            char c;
-            cin >> c;
-            grid[i][j] = c;
-            if (c == '#')
-                vis[i][j] = true;
-            if (c == 'A')
-                start = {i, j};
-            if (c == 'B')
-                destination = {i, j};
-        }
+        cin >> arr[i];
+        sum += arr[i];
     }
-    bfs();
-    if (!vis[destination.ff][destination.ss])
-    {
-        pn;
-        return;
-    }
-    py;
-    vpii ans;
-    while (destination.ff != start.ff or destination.ss != start.ss)
-    {
-        ans.push_back(path[destination.ff][destination.ss]);
-        destination.ff -= ans.back().ff;
-        destination.ss -= ans.back().ss;
-    }
-    reverse(all(ans));
-    print(sz(ans));
-    for (auto c : ans)
-    {
-        if (c.ff == 1 and c.ss == 0)
-            cout << 'D';
-        else if (c.ff == -1 and c.ss == 0)
-            cout << 'U';
-        else if (c.ff == 0 and c.ss == 1)
-            cout << 'R';
-        else if (c.ff == 0 and c.ss == -1)
-            cout << 'L';
-    }
+    if (sum < 0)
+        cout << sum * -1 << endl;
+    else
+        cout << sum << endl;
 }
