@@ -352,15 +352,12 @@ void solve()
 {
     int n;
     cin >> n;
-    int arr[n];
+    vi arr(n);
     int sum = 0;
     fo(i, n)
     {
         cin >> arr[i];
         sum += arr[i];
     }
-    if (sum < 0)
-        cout << sum * -1 << endl;
-    else
-        cout << sum << endl;
+    print(abs(sum));
 }
